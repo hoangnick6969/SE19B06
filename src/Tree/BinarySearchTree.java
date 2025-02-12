@@ -42,6 +42,18 @@ public class BinarySearchTree {
         if(temp1.data<x) temp1.right=new Node(x);
         
     }
+    Node insertRec(int x, Node node){
+        if(node==null){
+            node =new Node(x);
+            return node;
+        }
+        if(x<node.data)node.left=insertRec(x,node.left);
+        if(x>node.data)node.right=insertRec(x,node.right);
+        return node;
+    }
+    void insertRec(int x){
+        root= insertRec(x,root);
+    }
     void preOrder(Node root){
         if (isEmpty()) System.out.println("Empty");  
         else{

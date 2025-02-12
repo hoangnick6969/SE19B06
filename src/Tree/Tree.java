@@ -25,15 +25,23 @@ public class Tree {
 //        System.out.println("\nIn-order traverse");
 //        aBinTree.inOrder();
             BinarySearchTree bst=new BinarySearchTree();
-            bst.insert(10);
-            bst.insert(5);
-            bst.insert(3);
-            bst.insert(8);
-            bst.insert(20);
-            bst.insert(15);
+//            bst.insert(10);
+//            bst.insert(5);
+//            bst.insert(3);
+//            bst.insert(8);
+//            bst.insert(20);
+//            bst.insert(15);
+            bst.insertRec(10);
+            bst.insertRec(5);
+            bst.insertRec(3);
+            bst.insertRec(8);
+            bst.insertRec(20);
+            bst.insertRec(15);
             System.out.println("Pre-order traverse: ");
             bst.preOrder();
-             System.out.println("In-order traverse: ");
+             System.out.println("In order traverse: ");
             bst.inOrder();
+            System.out.println("Post order traverse: ");
+            bst.postOrder();
     }
 }
