@@ -31,16 +31,29 @@ public class Tree {
 //            bst.insert(8);
 //            bst.insert(20);
 //            bst.insert(15);
-            bst.insertRec(10);
-            bst.insertRec(5);
-            bst.insertRec(3);
-            bst.insertRec(8);
+            bst.insertRec(30);
             bst.insertRec(20);
-            bst.insertRec(15);
+            bst.insertRec(50);
+            bst.insertRec(10);
+            bst.insertRec(25);
+            bst.insertRec(40);
+            bst.insertRec(55);
             System.out.println("Pre-order traverse: ");
             bst.preOrder();
+           
              System.out.println("In order traverse: ");
             bst.inOrder();
+          
+            System.out.println("Post order traverse: ");
+            bst.postOrder();
+            System.out.println("\n======================");
+            bst.deleteByMerging(50);
+            System.out.println("Pre-order traverse: ");
+            bst.preOrder();
+            
+             System.out.println("In order traverse: ");
+            bst.inOrder();
+           
             System.out.println("Post order traverse: ");
             bst.postOrder();
     }

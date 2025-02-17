@@ -62,6 +62,55 @@ public class BinarySearchTree {
             if (root.right != null) preOrder(root.right);
         }
     }
+    
+    Node findNode(int x, Node root){
+        if(root==null) return null;
+        if(root.data==x)return root;
+        if(root.data>x) root=findNode(x, root.left);
+        if(root.data<x) root=findNode(x, root.right);
+        return root;
+    }
+    
+    Node findNode(int x){
+        Node node=findNode(x,root);
+        if(root==null) System.out.println("Not found");
+        return null;
+    }
+    Node findMostRightInLeft(Node root){
+        if(root.left==null) return root;
+        Node current =root.left;//move to left subtree
+        while(current.right!=null){
+            current=current.right;
+        }
+        return current;
+    }
+    Node deleteByMerging(int x,Node root){
+      if(root==null){
+          return null;
+      }
+      if(root.data<x){
+          root.right=deleteByMerging(x, root.right);
+        }else if(root.data>x){
+            root.left=deleteByMerging(x, root.left);
+        }else{
+            if(root.left==null){
+                root=root.right;
+            }
+            if(root.right==null){
+                return root.left;
+            }
+            Node mostRight=findMostRightInLeft(root);
+            mostRight.right=root.right;
+            return root.left;
+            
+        }
+      return root;
+        
+    }
+    void deleteByMerging(int x){
+        Node node=deleteByMerging(x, root);
+    }
+            
     void preOrder(){
         preOrder(root);
     }
