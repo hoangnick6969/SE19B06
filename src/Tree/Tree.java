@@ -44,17 +44,18 @@ public class Tree {
              System.out.println("In order traverse: ");
             bst.inOrder();
           
-            System.out.println("Post order traverse: ");
-            bst.postOrder();
-            System.out.println("\n======================");
-            bst.deleteByMerging(50);
+//            System.out.println("Post order traverse: ");
+//            bst.postOrder();
+            System.out.println("\n=========================");
+//            bst.deleteByMerging(50);
+            bst.deleteByCopying(50);
             System.out.println("Pre-order traverse: ");
             bst.preOrder();
             
              System.out.println("In order traverse: ");
             bst.inOrder();
            
-            System.out.println("Post order traverse: ");
-            bst.postOrder();
+//            System.out.println("Post order traverse: ");
+//            bst.postOrder();
     }
 }

@@ -107,8 +107,35 @@ public class BinarySearchTree {
       return root;
         
     }
+    
     void deleteByMerging(int x){
         Node node=deleteByMerging(x, root);
+    }
+    Node deleteByCopying(int x,Node node){
+     if(node==null)   return null;
+     if(node.data<x){
+         node.right=deleteByCopying(x, node.right);
+     }else if (node.data>x){
+         node.left=deleteByCopying(x, node.left);
+     }else {
+        //found 
+        //there is 1 child
+        if (node.left==null) return node.right;
+        if(node.right==null) return node.left;
+        // there are two children
+        
+        //find most right of left subtree
+        Node mostRight=findMostRightInLeft(node);
+        //copy most right nod to delete node 
+//        node.data=mostRight.data;
+//        //delete most right node
+//        mostRight=deleteByCopying(mostRight.data,mostRight);
+        node.data=deleteByCopying(mostRight.data,node).data;
+     }
+     return node;
+    }
+    void deleteByCopying(int x){
+        Node node=deleteByCopying(x, root);
     }
             
     void preOrder(){
