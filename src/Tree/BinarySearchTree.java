@@ -17,7 +17,7 @@ public class BinarySearchTree {
         Node right, left;
         public Node(int x){
             this.data=x;
-            this.right=this.right=null;
+            this.right=this.left=null;
             
         }
     }
@@ -29,7 +29,10 @@ public class BinarySearchTree {
         return root==null;
     }
     void insert(int x){
-        if(isEmpty()) root=new Node(x);
+        if(isEmpty()){ 
+            root=new Node(x);
+                return ;
+        }
         Node temp=root;
         Node temp1=null;
         while(temp!=null){
@@ -74,7 +77,7 @@ public class BinarySearchTree {
     Node findNode(int x){
         Node node=findNode(x,root);
         if(root==null) System.out.println("Not found");
-        return null;
+        return node;
     }
     Node findMostRightInLeft(Node root){
         if(root.left==null) return root;
@@ -104,7 +107,7 @@ public class BinarySearchTree {
             return root.left;
             
         }
-      return root;
+      return root.right;
         
     }
     
@@ -127,10 +130,10 @@ public class BinarySearchTree {
         //find most right of left subtree
         Node mostRight=findMostRightInLeft(node);
         //copy most right nod to delete node 
-//        node.data=mostRight.data;
+        node.data=mostRight.data;
 //        //delete most right node
 //        mostRight=deleteByCopying(mostRight.data,mostRight);
-        node.data=deleteByCopying(mostRight.data,node).data;
+        node.left=deleteByCopying(mostRight.data,node.left);
      }
      return node;
     }
@@ -165,4 +168,35 @@ public class BinarySearchTree {
         void postOrder(){
         postOrder(root);
     }
+        void balance(Node node){
+          //save tree to array 
+          Node[] arrayNodes=new Node[20];
+          saveOrder(node, arrayNodes, 0);
+          for( Node x:arrayNodes) {
+              if(x!=null) System.out.println(x.data+"   ");
+          }
+     
+      }
+        void balance(){
+          balance(root);
+      }
+      
+      void saveOrder(Node root,Node[]arr,int idx){
+        if (isEmpty()) System.out.println("Empty");  
+        else{
+            
+            System.out.println("idx= "+idx);
+            //visit left child
+            if (root.left != null){
+                saveOrder(root.left,arr,idx);
+            }
+            //visit root
+            arr[idx]=root;
+            //visit right child
+            if (root.right != null){
+                saveOrder(root.right,arr,idx+2);
+            }
+        }
+    }
+    
 }

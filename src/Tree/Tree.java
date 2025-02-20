@@ -37,6 +37,8 @@ public class Tree {
             bst.insertRec(10);
             bst.insertRec(25);
             bst.insertRec(40);
+            bst.insertRec(35);
+            bst.insertRec(45);
             bst.insertRec(55);
             System.out.println("Pre-order traverse: ");
             bst.preOrder();
@@ -57,5 +59,7 @@ public class Tree {
            
 //            System.out.println("Post order traverse: ");
 //            bst.postOrder();
+ System.out.println("\n=========================");
+            bst.balance();
     }
 }
