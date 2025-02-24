@@ -57,14 +57,6 @@ public class BinarySearchTree {
     void insertRec(int x){
         root= insertRec(x,root);
     }
-    void preOrder(Node root){
-        if (isEmpty()) System.out.println("Empty");  
-        else{
-            System.out.println(root.data+ " ");
-            if (root.left != null) preOrder(root.left);
-            if (root.right != null) preOrder(root.right);
-        }
-    }
     
     Node findNode(int x, Node root){
         if(root==null) return null;
@@ -140,7 +132,15 @@ public class BinarySearchTree {
     void deleteByCopying(int x){
         Node node=deleteByCopying(x, root);
     }
-            
+         void preOrder(Node root) {
+       if (isEmpty()) System.out.println("Empty");  
+       else{
+            System.out.println(root.data+ " ");
+            if (root.left != null) preOrder(root.left);
+            if (root.right != null) preOrder(root.right);
+            }
+    }
+   
     void preOrder(){
         preOrder(root);
     }
@@ -167,36 +167,6 @@ public class BinarySearchTree {
     }
         void postOrder(){
         postOrder(root);
-    }
-        void balance(Node node){
-          //save tree to array 
-          Node[] arrayNodes=new Node[20];
-          saveOrder(node, arrayNodes, 0);
-          for( Node x:arrayNodes) {
-              if(x!=null) System.out.println(x.data+"   ");
-          }
-     
-      }
-        void balance(){
-          balance(root);
-      }
-      
-      void saveOrder(Node root,Node[]arr,int idx){
-        if (isEmpty()) System.out.println("Empty");  
-        else{
-            
-            System.out.println("idx= "+idx);
-            //visit left child
-            if (root.left != null){
-                saveOrder(root.left,arr,idx);
-            }
-            //visit root
-            arr[idx]=root;
-            //visit right child
-            if (root.right != null){
-                saveOrder(root.right,arr,idx+2);
-            }
-        }
     }
     
 }
